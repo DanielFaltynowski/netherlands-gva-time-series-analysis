@@ -10,11 +10,17 @@ Finally, define the **seasonality** of the time series for the given data and, u
 
 # Laboratory 02: Chain Indices and Constant Price Calculation
 
-Download **gross value added (GVA)** data for the Netherlands from the [**Eurostat**](https://ec.europa.eu/eurostat) website in **constant prices for 2015 and 2020** (two separate datasets).
+Download data on **gross value added (GVA)** for the **Netherlands** from the [**Eurostat**](https://ec.europa.eu/eurostat) website in **constant prices (reference year 2020)**.
 
-In your current project, which uses GVA in **nominal prices**, calculate **quarterly and annual chain indices**. Then, using the **Solver tool** in the Excel **Analysis ToolPak** and the previously downloaded constant price data, attempt to calculate **constant prices for GVA in 2020 and 2015** based on the calculated chain indices.
+Next, using the dataset developed in the **previous laboratories**, calculate **GVA in nominal prices** for the years **2016** and **2024**.
 
-Enter the resulting data into your **Laboratory 01 project** and interpret the differences between the obtained time series.
+Then, based on:
+- GVA in **constant prices (2020)** obtained from Eurostat, and  
+- GVA in **nominal prices** for **2016** and **2024**,
+
+calculate **GVA in constant prices** for the years **2016** and **2024** (with **2020 as the base year**).
+
+Finally, enter the resulting data into your **Laboratory 01 project** and interpret the differences between the obtained time series, focusing on the impact of price changes.
 
 <br>
 
