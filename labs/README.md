@@ -35,9 +35,9 @@ Finally, select the model that exhibits the **smallest residual variance** as th
 
 <br>
 
-# Laboratory 04: Advanced GVA Modeling: Quadratic, Logarithmic, and Logistic Models
+# Laboratory 04: Advanced GVA Modeling: Quadratic, and Logistic Models
 
-**Laboratory 04** is a continuation of the previous laboratory work, focusing on the **modeling of Gross Value Added (GVA)**. In this exercise, you are required to estimate and fit **quadratic, logarithmic, and logistic models** to the Netherlands GVA dataset. 
+**Laboratory 04** is a continuation of the previous laboratory work, focusing on the **modeling of Gross Value Added (GVA)**. In this exercise, you are required to estimate and fit **quadratic and logistic models** to the Netherlands GVA dataset. 
 
 For each model, perform a thorough analysis of the **goodness-of-fit**, including the **residual variance**, **parameter significance**, and other relevant diagnostic measures. Visualize the fitted models to assess how well they capture the trends in the data.
 
