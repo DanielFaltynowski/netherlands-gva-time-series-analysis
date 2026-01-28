@@ -57,3 +57,8 @@ Next, assess the **statistical significance of the parameters** for each model. 
 
 Finally, compare all three models, select the **best-fitting model**, and provide an interpretation of its results. Additionally, calculate and analyze the **growth rate** and **pace of change** for the selected model.
 
+<br>
+
+# Laboratory 06: Seasonal Dummies and Autocorrelation Analysis
+
+Introduce **seasonal dummy variables** to the GVA model and check for **autocorrelation** in residuals for lags 1–4 using the **Breusch-Godfrey test**. Next, remove statistically insignificant variables and re-estimate the model, again testing for autocorrelation. Finally, replace seasonal dummies with **alternative indicators**, assess parameter significance and  select the best-fitting model.
