@@ -62,3 +62,19 @@ Finally, compare all three models, select the **best-fitting model**, and provid
 # Laboratory 06: Seasonal Dummies and Autocorrelation Analysis
 
 Introduce **seasonal dummy variables** to the GVA model and check for **autocorrelation** in residuals for lags 1–4 using the **Breusch-Godfrey test**. Next, remove statistically insignificant variables and re-estimate the model, again testing for autocorrelation. Finally, replace seasonal dummies with **alternative indicators**, assess parameter significance and  select the best-fitting model.
+
+<br>
+
+# Laboratory 07: Autoregressive and Mixed Model Analysis of GVA
+
+Using the **Gross Value Added (GVA) time series for the Netherlands**, estimate a **pure autoregressive (AR) model** including multiple lags of the dependent variable and assess its statistical properties.
+
+Evaluate the model in terms of:
+- **parameter significance**,  
+- **residual autocorrelation** (Breusch–Godfrey test),  
+- **parameter stability** (CUSUM test),  
+- **overall model adequacy** and suitability for forecasting.
+
+Next, construct a **mixed (structural–autoregressive) model** by combining the autoregressive structure with the best structural model obtained in previous laboratories. Analyze its statistical properties and compare it with the pure autoregressive model.
+
+Finally, compare both models with respect to **stability, parsimony, goodness-of-fit, and forecasting reliability**, select the **best-performing specification**, and provide an **economic and econometric interpretation** of the results, including a discussion of model limitations.
