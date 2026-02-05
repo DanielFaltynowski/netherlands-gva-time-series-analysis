@@ -90,7 +90,13 @@ W celu oszacowania modelu, który najlepiej opisje szereg wykorzystano klasyczn�
 | Logistic          | $\hat{y}_t = \frac{\beta_0}{1+\beta_1 e^{\beta_2 t}}$ | 269320     | 0.62      | 0.07      |
 
 <p float="left">
-  <img src="screenshots/07.png" width="33%" />
-  <img src="screenshots/08.png" width="33%" />
-  <img src="screenshots/09.png" width="33%" />
+  <img src="screenshots/07.png" width="30%" />
+  <img src="screenshots/08.png" width="30%" />
+  <img src="screenshots/09.png" width="30%" />
 </p>
+
+<p float="left">
+  <img src="screenshots/10.png" width="30%" />
+  <img src="screenshots/11.png" width="30%" />
+</p>
+*Wykresy przedstawiają wizualnie oszacowane modele regresji*
