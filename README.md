@@ -81,6 +81,15 @@ Dzięki temu wyeliminowano wpływ inflacji, co pozwala na analizę i prognozowan
 
 W celu oszacowania modelu, który najlepiej opisje szereg wykorzystano klasyczną metodę najmniejszych kwadratów. Dodatkowo przeprowadzono testy istotności parametrów aby móc wykorzystać istotne statystycznie współczynniki. Efentem działań są następujące modele
 
+| Nazwa modelu      | Wzór modelu                              | $\beta_0$   | $\beta_1$  | $\beta_2$ |
+|------------------|-----------------------------------------|------------|------------|-----------|
+| Linear            | $\hat{y}_t = \beta_0 + \beta_1 t$       | 138918.19  | 2695.59    |           |
+| Power             | $\hat{y}_t = e^{\beta_0} t^{\beta_1}$  | 11.72      | 0.16       |           |
+| Exponential       | $\hat{y}_t = e^{\beta_0 + \beta_1 t}$  | 11.89      | 0.01       |           |
+| Quadratic         | $\hat{y}_t = \beta_0 + \beta_2 t^2$    | 157513.54  |            | 58.97     |
+| Logistic          | $\hat{y}_t = \frac{\beta_0}{1+\beta_1 e^{\beta_2 t}}$ | 269320     | 0.62      | 0.07      |
+
+
 - **Linear model**: 
 
 $$
