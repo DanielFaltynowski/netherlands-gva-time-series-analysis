@@ -1,87 +1,95 @@
 # 🇳🇱 Netherlands Gross Value Added (GVA): Time Series Analysis
 
-Niniejsze repozytorium zawiera projekt zaliczeniowy z przedmiotu **Analiza Szeregów Czasowych**, którego celem jest analiza szeregu czasowego przedstawiającego **wartość dodaną brutto (Gross Value Added, GVA) w Holandii** w okresie **2015Q1–2025Q2** oraz budowa modeli mogących znaleźć zastosowanie w **prognozowaniu**.
+This repository contains a course project for **Time Series Analysis**, aimed at analyzing the time series of **Gross Value Added (GVA) in the Netherlands** for the period **2015Q1–2025Q2**, as well as building models that can be used for **forecasting**.
 
-Projekt obejmuje pełen proces analizy szeregów czasowych — od wstępnego przetwarzania danych, przez modelowanie ekonometryczne, aż po interpretację wyników.
 
-Wykorzystane narzędzia: Excel, Gretl
+The project covers the entire time series analysis process — from initial data preprocessing, through econometric modeling, to the interpretation of results.
 
-### Zakres projektu
+**Tools used**: *Excel*, *Gretl*
 
-W ramach projektu zrealizowano następujące etapy analizy:
 
-- dekompozycja szeregu czasowego (usuwanie trendu i sezonowości),
-- deflacja danych – konwersja cen nominalnych do cen stałych,
-- estymacja modeli przy użyciu **klasycznej metody najmniejszych kwadratów (KMNK)**,
-- identyfikacja i analiza **załamania strukturalnego** spowodowanego pandemią COVID-19,
-- analiza autokorelacji i własności składnika losowego,
-- zastosowanie **zmiennych sztucznych (dummy variables)**,
-- budowa i analiza **modeli autoregresyjnych (AR)**.
+### Project Scope
 
-Projekt ma charakter analityczno-modelowy i stanowi spójną podstawę do dalszych prac prognostycznych oraz rozbudowy o bardziej zaawansowane modele.
+The project involved the following stages of analysis:
 
-# Raport
+- Time series decomposition (removing trend and seasonality),
+- Data deflation – converting nominal prices to constant prices,
+- Model estimation using the **classical Ordinary Least Squares (OLS) method**,
+- Identification and analysis of **structural breaks** caused by the COVID-19 pandemic,
+- Analysis of autocorrelation and properties of the stochastic component,
+- Use of **dummy variables**,
+- Construction and analysis of **autoregressive (AR) models**.
 
-*W tej sekcji przedstawiono kluczowe etapy analizy oraz najważniejsze wnioski.  
-W celu zapoznania się z pełnym projektem oraz kompletną dokumentacją obliczeń i modeli, zapraszam do przejrzenia pliku Excel znajdującego się w folderze* `src`*.*
+The project is analytical and modeling in nature, providing a coherent foundation for further forecasting work and expansion with more advanced models.
 
-### Opis szeregu
 
-Wartość dodana brutto (GVA – *Gross Value Added*) jest miarą określającą, ile realnej wartości ekonomicznej zostało wytworzone w gospodarce przez przedsiębiorstwa, sektory gospodarki lub całe państwo w danym okresie.
+# Report
 
-Analizowany szereg czasowy opisany jest przez następujące zmienne:
+*This section presents the key stages of the analysis and the main conclusions.  
+For a full overview of the project and complete documentation of calculations and models, please refer to the Excel file located in the* `src` *folder.*
 
-- $t$ — zmienna reprezentująca czas,  
-- $GVA_t$ — wartość dodana brutto w okresie $t$.
 
-### Dekompozycja szeregu czasowego
+### Time Series Description
 
-Do usunięcia trendu zastosowano **różnicowanie pierwszego rzędu** (*first-order differencing*):
+Gross Value Added (GVA) is a measure that indicates how much real economic value has been created in the economy by enterprises, economic sectors, or the entire country during a given period.
+
+The analyzed time series is described by the following variables:
+
+- $t$ — a variable representing time,  
+- $GVA_t$ — Gross Value Added in period $t$.
+
+
+### Time Series Decomposition
+
+**First-order differencing** was applied to remove the trend:
+
 
 $$
 GVA_{\text{noTrend}} = GVA_{t} - GVA_{t-1}
 $$
 
-Sezonowość usunięto metodą **addytywnej dekompozycji sezonowej z wykorzystaniem wskaźników sezonowych**:
+Seasonality was removed using the **additive seasonal decomposition method with seasonal indices**:
+
 
 $$
 GVA_{\text{noTrendNoSeasonality}} = GVA_{\text{noTrend}} - \text{cleanedIndicator}(q),
 $$
 
-gdzie $\text{cleanedIndicator}(q)$ to **oczyszczony wskaźnik sezonowy** przypisany do kwartału $q$, wyznaczony na podstawie komponentu sezonowego szeregu po usunięciu trendu, reprezentujący systematyczne, powtarzalne odchylenia sezonowe niezależne od trendu długookresowego.
+where $\text{cleanedIndicator}(q)$ is the **cleaned seasonal indicator** assigned to quarter $q$, derived from the seasonal component of the series after trend removal, representing systematic, repeatable seasonal deviations independent of the long-term trend.
+
 
 ![Gross Value Added for Netherlands](screenshots/02.png)
-*Wykres przedstatawia zmiany, jakie dokonano dzięki dekompozycji trendu i sezonowości*
+*The chart illustrates the changes made through trend and seasonality decomposition.*
 
 ### Deflacja danych
 
-Ze względu na występowanie inflacji, poziomy cen sprzed kilku–kilkunastu lat są zaniżone względem cen bieżących, co utrudnia bezpośrednią porównywalność obserwacji w czasie.  
-Dlatego zdecydowano się przeanalizować szereg w **cenach stałych**, przyjmując jako lata bazowe **2016** oraz **2024**.
+Due to inflation, price levels from several to over ten years ago are lower compared to current prices, which makes direct comparison of observations over time difficult.  
+Therefore, the series was analyzed in **constant prices**, using **2016** and **2024** as base years.
 
-W tym celu pozyskano oficjalne roczne wartości GVA, a następnie — przy użyciu narzędzia **Solver** — oszacowano wartość $GVA_{2016Q1}$ poprzez minimalizację funkcji:
+For this purpose, official annual GVA values were obtained, and then — using the **Solver** tool — the value of $GVA_{2016Q1}$ was estimated by minimizing the following function:
 
 $$
 \text{abs}(\sum_{t=2016Q1}^{2016Q4}{[GVA_t]} - GVA_{2016})
 $$
 
-co zapewnia zgodność sumy kwartalnych obserwacji z oficjalną wartością roczną dla 2016 roku.
+which ensures that the sum of quarterly observations matches the official annual value for 2016.
 
-Analogicznie proces wykonano dla obliczenia cen stałych z 2024 roku.
+A similar process was carried out to calculate constant prices for 2024.
 
 <p float="left">
   <img src="screenshots/05.png" width="45%" />
   <img src="screenshots/06.png" width="45%" />
 </p>
 
-*Wykresy przedstawiają zdekomponowane szeregi w cenach z 2016 i 2024 roku*
+*The charts show the decomposed series in 2016 and 2024 constant prices.*
+This eliminates the impact of inflation, allowing for the analysis and forecasting of real values in constant prices corresponding to today's levels.
 
-Dzięki temu wyeliminowano wpływ inflacji, co pozwala na analizę i prognozowanie wartości realnej w cenach stałych, odpowiadających poziomowi dzisiejszemu.
+### Regression Models
 
-### Modele regresji
+To estimate the model that best describes the series, the classical Ordinary Least Squares (OLS) method was used. Additionally, parameter significance tests were conducted to identify coefficients that are statistically significant. The result of these efforts is the following set of models.
 
-W celu oszacowania modelu, który najlepiej opisje szereg wykorzystano klasyczną metodę najmniejszych kwadratów. Dodatkowo przeprowadzono testy istotności parametrów aby móc wykorzystać istotne statystycznie współczynniki. Efektem działań są następujące modele.
 
-| Nazwa modelu      | Wzór modelu                              | $\beta_0$   | $\beta_1$  | $\beta_2$ |
+| Model      | Formula                              | $\beta_0$   | $\beta_1$  | $\beta_2$ |
 |------------------|-----------------------------------------|------------|------------|-----------|
 | Linear            | $\hat{y}_t = \beta_0 + \beta_1 t$       | 138918.19  | 2695.59    |           |
 | Power             | $\hat{y}_t = e^{\beta_0} t^{\beta_1}$  | 11.72      | 0.16       |           |
@@ -100,18 +108,18 @@ W celu oszacowania modelu, który najlepiej opisje szereg wykorzystano klasyczn�
   <img src="screenshots/11.png" width="30%" />
 </p>
 
-*Wykresy przedstawiają wizualnie oszacowane modele regresji*
+*The charts visually present the estimated regression models.*
 
 
-W każdym modelu oszacowano również średnią szybkość i tempo zmian:
+In each model, the average rate and velocity were also estimated:
 
 $$
     \text{speed}=\frac{\partial\hat{y}}{\partial t}, \quad \text{velocity}=\frac{1}{\hat{y}}\times \frac{\partial\hat{y}}{\partial t}
 $$
 
-Na podstawie analizy wariancji reszt dla różnych modeli zdecydowano się na wybór **modelu kwadratowego**, który charakteryzuje się najniższą wariancją reszt, co świadczy o najlepszym dopasowaniu do danych.
+Based on the analysis of residual variance for different models, the **quadratic model** was selected, as it exhibits the lowest residual variance, indicating the best fit to the data.
 
-| Model                  | Wariancja reszt       | Wariancja [%] |
+| Model                  | Variance of Errors       | Variance [%] |
 |------------------------|---------------------|---------------|
 | Linear                 | 1,80575E+16          | 499,71%       |
 | Power                  | 1,59969E+17          | 4426,86%      |
@@ -119,15 +127,15 @@ Na podstawie analizy wariancji reszt dla różnych modeli zdecydowano się na wy
 | **Quadratic**              | **3,6136E+15**           | **100,00%**       |
 | Logistic               | 9,01535E+17          | 24948,35%     |
 
-**Wniosek:** Model kwadratowy najlepiej opisuje analizowany szereg czasowy, a jego reszty mają najniższą wariancję, co oznacza minimalizację błędu dopasowania.
+**Conclusion:** The quadratic model best describes the analyzed time series, and its residuals have the lowest variance, indicating minimal fitting error.
 
 
-### Załamanie strukturalne wywołane pandemią COVID-19
+### Structural Break Caused by the COVID-19 Pandemic
 
-W 2020 roku, w wyniku pandemii COVID-19, gospodarka Holandii doświadczyła gwałtownego załamania, co znalazło odzwierciedlenie w wyraźnie obniżonych wartościach GVA.  
-Aby uwzględnić ten **nietypowy, jednorazowy efekt** w modelu szeregów czasowych, wprowadzono **zmienną sztuczną (dummy variable)** przyjmującą wartość 1 od czasu pandemii, a 0 w pozostałych kwartałach.
+In 2020, as a result of the COVID-19 pandemic, the Dutch economy experienced a sharp downturn, reflected in significantly lower GVA values.  
+To account for this **unusual, one-time effect** in the time series model, a **dummy variable** was introduced, taking the value 1 during the pandemic period and 0 in the other quarters.
 
-Po analizie istotności statystycznej współczynników modelu uzyskano następujący wynik.
+After analyzing the statistical significance of the model coefficients, the following result was obtained.
 
 $$
 \hat{y} = \beta_0 + \beta_1t + \gamma_0 d + \gamma_1dt, \quad  d = 1 \text{ if } t \geq 2020Q1 \text{ else } 0
@@ -135,27 +143,29 @@ $$
 
 ![](screenshots/15.png)
 
-*Wykres przedstawia analizę modelu z załamaniem strukturalnym od czasu pandemii COVID-19*
+*The chart presents the analysis of the model with a structural break from the onset of the COVID-19 pandemic.*
 
-### Zmienne sztuczne sezonowe
-W analizie wykorzystano **zmienne sztuczne sezonowe** oraz ich alternatywne postaci, np. $s_{1_s} = s_1 - s_4$.  
+### Seasonal Dummy Variables
+
+The analysis used **seasonal dummy variables** and their alternative forms, e.g., $s_{1_s} = s_1 - s_4$.
+
 
 ![](screenshots/18.png)
 
-*Wykresy przedstawiają wizualnie model szeregu ze zmiennymi sztucznymi alternatywnymi oraz wyniki testów Breuscha-Godfreya oraz CUSUM*
+*The charts visually present the series model with alternative dummy variables, along with the results of the Breusch-Godfrey and CUSUM tests.*
 
-We wszystkich wariantach **nie wykryto autokorelacji reszt** przy użyciu testu Breuscha-Godfreya.
+In all variants, **no residual autocorrelation was detected** using the Breusch-Godfrey test.
 
-As a result of these steps, the models obtained are well-suited for forecasting, without risk of misrepresentation and with proper specification maintained.
+As a result of these steps, the models obtained are well-suited for forecasting, with proper specification maintained and no risk of misrepresentation.
 
-### Modele Autoregresyjne
+### Autoregressive Models
 
-Przeprowadzono analizę w celu sprawdzenia, czy model autoregresyjny (AR) lub model mieszany lepiej sprawdzi się w prognozowaniu.  
+An analysis was conducted to determine whether an autoregressive (AR) or a mixed model would perform better for forecasting.
 
-Do modelu dodano 12 zmiennych opóźnionych GVA i przeanalizowano wyniki. Po przeprowadzeniu redukcji zmiennych okazało się, że modele AR wykazują autokorelację. Natomiast w przypadku zastosowania sztucznych zmiennych alternatywnych nie zaobserwowano autokorelacji.  
+The model included 12 lagged GVA variables, and the results were analyzed. After variable reduction, it was found that AR models exhibited autocorrelation. However, when alternative dummy variables were used, no autocorrelation was observed. 
 
 ![](screenshots/21.png)
 
-*Wykresy przedstawiają wizualnie model szeregu ze zmiennymi sztucznymi alternatywnymi oraz opóźnionymi zmiennymi objaśnianymi oraz wyniki testów Breuscha-Godfreya oraz CUSUM*
+*The charts visually present the series model with alternative dummy variables and lagged explanatory variables, along with the results of the Breusch-Godfrey and CUSUM tests.*
 
-Oznacza to, że dla tego szeregu czasowego prognozowanie jest bardziej efektywne przy wykorzystaniu modeli opartych na sztucznych zmiennych alternatywnych.
+This indicates that, for this time series, forecasting is more effective when using models based on alternative dummy variables.
