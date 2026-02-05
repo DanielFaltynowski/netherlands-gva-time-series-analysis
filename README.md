@@ -132,3 +132,7 @@ Po analizie istotności statystycznej współczynników modelu uzyskano następu
 $$
 \hat{y} = \beta_0 + \beta_1t + \gamma_0 d + \gamma_1dt, \quad  d = 1 \text{ if } t \geq 2020Q1 \text{ else } 0
 $$
+
+![](screenshots/15.png)
+
+*Wykres przedstawia analizę modelu z załamaniem strukturalnym od czasu pandemii COVID-19*
