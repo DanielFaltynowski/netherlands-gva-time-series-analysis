@@ -109,8 +109,6 @@ $$
     \text{speed}=\frac{\partial\hat{y}}{\partial t}, \quad \text{velocity}=\frac{1}{\hat{y}}\times \frac{\partial\hat{y}}{\partial t}
 $$
 
-### Wybór najlepszego modelu
-
 Na podstawie analizy wariancji reszt dla różnych modeli zdecydowano się na wybór **modelu kwadratowego**, który charakteryzuje się najniższą wariancją reszt, co świadczy o najlepszym dopasowaniu do danych.
 
 | Model                  | Wariancja reszt       | Wariancja [%] |
@@ -128,3 +126,9 @@ Na podstawie analizy wariancji reszt dla różnych modeli zdecydowano się na wy
 
 W 2020 roku, w wyniku pandemii COVID-19, gospodarka Holandii doświadczyła gwałtownego załamania, co znalazło odzwierciedlenie w wyraźnie obniżonych wartościach GVA.  
 Aby uwzględnić ten **nietypowy, jednorazowy efekt** w modelu szeregów czasowych, wprowadzono **zmienną sztuczną (dummy variable)** przyjmującą wartość 1 od czasu pandemii, a 0 w pozostałych kwartałach.
+
+Po analizie istotności statystycznej współczynników modelu uzyskano następujący wynik.
+
+$$
+\hat{y} = \beta_0 + \beta_1t + \gamma_0 d + \gamma_1dt, \quad  d = 1 \text{ if } t \geq 2020Q1 \text{ else } 0
+$$
