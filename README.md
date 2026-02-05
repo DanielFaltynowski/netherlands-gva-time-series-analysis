@@ -4,6 +4,8 @@ Niniejsze repozytorium zawiera projekt zaliczeniowy z przedmiotu **Analiza Szere
 
 Projekt obejmuje pełen proces analizy szeregów czasowych — od wstępnego przetwarzania danych, przez modelowanie ekonometryczne, aż po interpretację wyników.
 
+Wykorzystane narzędzia: Excel, Gretl
+
 ### Zakres projektu
 
 W ramach projektu zrealizowano następujące etapy analizy:
@@ -16,9 +18,34 @@ W ramach projektu zrealizowano następujące etapy analizy:
 - zastosowanie **zmiennych sztucznych (dummy variables)**,
 - budowa i analiza **modeli autoregresyjnych (AR)**.
 
-Projekt ma charakter analityczno-modelowy i stanowi spójną podstawę do dalszych prac prognostycznych oraz rozbudowy o bardziej zaawansowane modele (np. ARIMA, SARIMA, VAR, modele z komponentem trendu stochastycznego).
+Projekt ma charakter analityczno-modelowy i stanowi spójną podstawę do dalszych prac prognostycznych oraz rozbudowy o bardziej zaawansowane modele.
 
 # Raport
 
 *W tej sekcji przedstawiono kluczowe etapy analizy oraz najważniejsze wnioski.  
 W celu zapoznania się z pełnym projektem oraz kompletną dokumentacją obliczeń i modeli, zapraszam do przejrzenia pliku Excel znajdującego się w folderze* `src`*.*
+
+### Opis szeregu
+
+Wartość dodana brutto (GVA – *Gross Value Added*) jest miarą określającą, ile realnej wartości ekonomicznej zostało wytworzone w gospodarce przez przedsiębiorstwa, sektory gospodarki lub całe państwo w danym okresie.
+
+Analizowany szereg czasowy opisany jest przez następujące zmienne:
+
+- $t$ — zmienna reprezentująca czas,  
+- $GVA_t$ — wartość dodana brutto w okresie $t$.
+
+### Dekompozycja szeregu czasowego
+
+Do usunięcia trendu zastosowano **różnicowanie pierwszego rzędu** (*first-order differencing*):
+
+$$
+GVA_{\text{no\_trend}} = GVA_{t} - GVA_{t-1}
+$$
+
+Sezonowość usunięto metodą **addytywnej dekompozycji sezonowej z wykorzystaniem wskaźników sezonowych**:
+
+$$
+GVA_{\text{no\_trend\_and\_no\_seasonality}} = GVA_{\text{no\_trend}} - \text{cleaned\_indicator}(q)
+$$
+
+$$
