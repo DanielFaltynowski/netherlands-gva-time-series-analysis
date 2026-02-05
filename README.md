@@ -39,11 +39,11 @@ Analizowany szereg czasowy opisany jest przez następujące zmienne:
 Do usunięcia trendu zastosowano **różnicowanie pierwszego rzędu** (*first-order differencing*):
 
 $$
-GVA_{\text{no\_trend}} = GVA_{t} - GVA_{t-1}
+GVA_{\text{noTrend}} = GVA_{t} - GVA_{t-1}
 $$
 
 Sezonowość usunięto metodą **addytywnej dekompozycji sezonowej z wykorzystaniem wskaźników sezonowych**:
 
 $$
-GVA_{\text{no_trend_and_no_seasonality}} = GVA_{\text{no_trend}} - \text{cleaned_indicator}(q)
+GVA_{\text{noTrendNoSeasonality}} = GVA_{\text{noTrend}} - \text{cleanedIndicator}(q)
 $$
