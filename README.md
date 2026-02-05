@@ -68,4 +68,9 @@ co zapewnia zgodność sumy kwartalnych obserwacji z oficjalną wartością rocz
 
 Analogicznie proces wykonano dla obliczenia cen stałych z 2024 roku.
 
-|![](screenshots/05.png)|![](screenshots/06.png)|
+<p float="left">
+  <img src="screenshots/05.png" width="45%" />
+  <img src="screenshots/06.png" width="45%" />
+</p>
+
+*Efekt operacji minimalizacji*
