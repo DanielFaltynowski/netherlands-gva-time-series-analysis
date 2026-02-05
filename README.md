@@ -61,7 +61,7 @@ Dlatego zdecydowano się przeanalizować szereg w **cenach stałych**, przyjmuj�
 W tym celu pozyskano oficjalne roczne wartości GVA, a następnie — przy użyciu narzędzia **Solver** — oszacowano wartość $GVA_{2016Q1}$ poprzez minimalizację funkcji:
 
 $$
-\Bigg|\sum_{t=2016Q1}^{2016Q4}{\bigg[GVA_t]\bigg} - GVA_{2016}\Bigg|
+\text{abs}(\sum_{t=2016Q1}^{2016Q4}{[GVA_t]} - GVA_{2016})
 $$
 
 co zapewnia zgodność sumy kwartalnych obserwacji z oficjalną wartością roczną dla 2016 roku.
