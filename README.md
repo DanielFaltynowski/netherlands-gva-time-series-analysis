@@ -136,3 +136,26 @@ $$
 ![](screenshots/15.png)
 
 *Wykres przedstawia analizę modelu z załamaniem strukturalnym od czasu pandemii COVID-19*
+
+### Zmienne sztuczne sezonowe
+W analizie wykorzystano **zmienne sztuczne sezonowe** oraz ich alternatywne postaci, np. $s_{1_s} = s_1 - s_4$.  
+
+![](screenshots/18.png)
+
+*Wykresy przedstawiają wizualnie model szeregu ze zmiennymi sztucznymi alternatywnymi oraz wyniki testów Breuscha-Godfreya oraz CUSUM*
+
+We wszystkich wariantach **nie wykryto autokorelacji reszt** przy użyciu testu Breuscha-Godfreya.
+
+As a result of these steps, the models obtained are well-suited for forecasting, without risk of misrepresentation and with proper specification maintained.
+
+### Modele Autoregresyjne
+
+Przeprowadzono analizę w celu sprawdzenia, czy model autoregresyjny (AR) lub model mieszany lepiej sprawdzi się w prognozowaniu.  
+
+Do modelu dodano 12 zmiennych opóźnionych GVA i przeanalizowano wyniki. Po przeprowadzeniu redukcji zmiennych okazało się, że modele AR wykazują autokorelację. Natomiast w przypadku zastosowania sztucznych zmiennych alternatywnych nie zaobserwowano autokorelacji.  
+
+![](screenshots/21.png)
+
+*Wykresy przedstawiają wizualnie model szeregu ze zmiennymi sztucznymi alternatywnymi oraz opóźnionymi zmiennymi objaśnianymi oraz wyniki testów Breuscha-Godfreya oraz CUSUM*
+
+Oznacza to, że dla tego szeregu czasowego prognozowanie jest bardziej efektywne przy wykorzystaniu modeli opartych na sztucznych zmiennych alternatywnych.
