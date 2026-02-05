@@ -99,4 +99,32 @@ W celu oszacowania modelu, który najlepiej opisje szereg wykorzystano klasyczn�
   <img src="screenshots/10.png" width="30%" />
   <img src="screenshots/11.png" width="30%" />
 </p>
+
 *Wykresy przedstawiają wizualnie oszacowane modele regresji*
+
+
+W każdym modelu oszacowano również średnią szybkość i tempo zmian:
+
+$$
+    \text{speed}=\frac{\partial\hat{y}}{\partial t}, \quad \text{velocity}=\frac{1}{\hat{y}}\times \frac{\partial\hat{y}}{\partial t}
+$$
+
+### Wybór najlepszego modelu
+
+Na podstawie analizy wariancji reszt dla różnych modeli zdecydowano się na wybór **modelu kwadratowego**, który charakteryzuje się najniższą wariancją reszt, co świadczy o najlepszym dopasowaniu do danych.
+
+| Model                  | Wariancja reszt       | Wariancja [%] |
+|------------------------|---------------------|---------------|
+| Linear                 | 1,80575E+16          | 499,71%       |
+| Power                  | 1,59969E+17          | 4426,86%      |
+| Exponential            | 1,00026E+16          | 276,80%       |
+| **Quadratic**              | **3,6136E+15**           | **100,00%**       |
+| Logistic               | 9,01535E+17          | 24948,35%     |
+
+**Wniosek:** Model kwadratowy najlepiej opisuje analizowany szereg czasowy, a jego reszty mają najniższą wariancję, co oznacza minimalizację błędu dopasowania.
+
+
+### Załamanie strukturalne wywołane pandemią COVID-19
+
+W 2020 roku, w wyniku pandemii COVID-19, gospodarka Holandii doświadczyła gwałtownego załamania, co znalazło odzwierciedlenie w wyraźnie obniżonych wartościach GVA.  
+Aby uwzględnić ten **nietypowy, jednorazowy efekt** w modelu szeregów czasowych, wprowadzono **zmienną sztuczną (dummy variable)** przyjmującą wartość 1 od czasu pandemii, a 0 w pozostałych kwartałach.
