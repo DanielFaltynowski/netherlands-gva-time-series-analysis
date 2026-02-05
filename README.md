@@ -51,7 +51,7 @@ $$
 gdzie $\text{cleanedIndicator}(q)$ to **oczyszczony wskaźnik sezonowy** przypisany do kwartału $q$, wyznaczony na podstawie komponentu sezonowego szeregu po usunięciu trendu, reprezentujący systematyczne, powtarzalne odchylenia sezonowe niezależne od trendu długookresowego.
 
 ![Gross Value Added for Netherlands](screenshots/02.png)
-*Wykres przedsatawia zmiany, jakie dokonano dzięki dekompozycji trendu i sezonowości*
+*Wykres przedstatawia zmiany, jakie dokonano dzięki dekompozycji trendu i sezonowości*
 
 ### Deflacja danych
 
@@ -73,4 +73,16 @@ Analogicznie proces wykonano dla obliczenia cen stałych z 2024 roku.
   <img src="screenshots/06.png" width="45%" />
 </p>
 
-*Efekt operacji minimalizacji*
+*Wykresy przedstawiają zdekomponowane szeregi w cenach z 2016 i 2024 roku*
+
+Dzięki temu wyeliminowano wpływ inflacji, co pozwala na analizę i prognozowanie wartości realnej w cenach stałych, odpowiadających poziomowi dzisiejszemu.
+
+### Modele regresji
+
+W celu oszacowania modelu, który najlepiej opisje szereg wykorzystano klasyczną metodę najmniejszych kwadratów. Dodatkowo przeprowadzono testy istotności parametrów aby móc wykorzystać istotne statystycznie współczynniki. Efentem działań są następujące modele
+
+- Model liniowy: $\hat{y} = \beta_0 + \beta_1t, \quad \beta_0=138918.19, \beta_1 = 2695.59$
+- Model potęgowy: $\hat{y} = e^{\beta_0}t^{\beta_1}, \quad \beta_0=11.72, \beta_1=0.16$
+- Model wykładniczy: $\hat{y} = e^{\beta_0 + \beta_1t}, \quad \beta_0=11.89, \beta_1=0.01$
+- Model kwadratowy: $\hat{y} = \beta_0 + \beta_2t^2, \quad \beta_0=157513.54, \beta_2=58.97$
+- Model logistyczny: $\hat{y} = \frac{\beta_0}{1+\beta_1e^{\beta_2t}}, \quad \beta_0=269320, \beta_1=0.62, \beta_2=0.07$
