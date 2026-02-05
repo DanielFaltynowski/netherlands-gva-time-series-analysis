@@ -47,5 +47,3 @@ Sezonowość usunięto metodą **addytywnej dekompozycji sezonowej z wykorzystan
 $$
 GVA_{\text{no\_trend\_and\_no\_seasonality}} = GVA_{\text{no\_trend}} - \text{cleaned\_indicator}(q)
 $$
-
-$$
