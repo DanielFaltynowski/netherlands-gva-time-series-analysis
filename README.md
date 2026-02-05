@@ -67,3 +67,5 @@ $$
 co zapewnia zgodność sumy kwartalnych obserwacji z oficjalną wartością roczną dla 2016 roku.
 
 Analogicznie proces wykonano dla obliczenia cen stałych z 2024 roku.
+
+|![](screenshots/05.png)|![](screenshots/06.png)|
